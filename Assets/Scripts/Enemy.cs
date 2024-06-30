@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] int goldReward = 25;
     [SerializeField] int goldPenalty = 25;
 
+    [SerializeField] int pointsReward = 100;
+    [SerializeField] int pointsPenalty = 25;
+
     Bank bank;
 
     // Start is called before the first frame update
@@ -23,5 +26,15 @@ public class Enemy : MonoBehaviour
     public void StealGold() {
         if (bank == null) { return; }
         bank.Withdraw(goldPenalty);
+    }
+
+    public void RewardPoints() {
+        if (bank == null) { return; }
+        bank.DepositPoints(pointsReward);
+    }
+
+    public void StealPoints() {
+        if (bank == null) { return; }
+        bank.WithdrawPoints(pointsPenalty);
     }
 }
